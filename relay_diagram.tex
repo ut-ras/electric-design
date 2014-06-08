@@ -30,12 +30,12 @@
   \end{scope}
 }
 
-
 \begin{document}
-
 \begin{circuitikz}
+  % manually push out edges TODO: find a better way to do this
+  \draw (-5.5,-14) rectangle (6,15.5);
   % the 24V source for everything
-  \draw (-2,-0.5) coordinate (R+) to ++(-1,0) to[open, o-o, v^=$24V source$]  ++(0,2) to ++(1.25,0) coordinate (R-);
+  \draw (-2,-0.5) to ++(-1,0) to[open, o-o, v^=$24V source$]  ++(0,2) to ++(1.25,0) ;
   \draw (-2,-12.5) to (-2,15);
   \draw (-1.75,-10.5) to (-1.75,14.75);
 
@@ -46,15 +46,15 @@
   \dpdt(0,6){R_4}{S7}{S8}
   \dpdt(0,12){R_5}{S9}{S10}
   % connect them to power
-  \draw (R_1+) to[short, -o] ++(-1.5,0);
-  \draw (R_1-) to[short, -o] ++(-1.25,0);
+  \draw (R_1+) to ++(-1.5,0);
   \draw (R_2+) to[short, -o] ++(-1.5,0);
-  \draw (R_2-) to[short, -o] ++(-1.25,0);
   \draw (R_3+) to[short, -o] ++(-1.5,0);
-  \draw (R_3-) to[short, -o] ++(-1.25,0);
   \draw (R_4+) to[short, -o] ++(-1.5,0);
-  \draw (R_4-) to[short, -o] ++(-1.25,0);
   \draw (R_5+) to[short, -o] ++(-1.5,0);
+  \draw (R_1-) to ++(-1.25,0);
+  \draw (R_2-) to[short, -o] ++(-1.25,0);
+  \draw (R_3-) to[short, -o] ++(-1.25,0);
+  \draw (R_4-) to[short, -o] ++(-1.25,0);
   \draw (R_5-) to[short, -o] ++(-1.25,0);
 
   % four batteries Hoka means everything else
@@ -86,9 +86,6 @@
   % connect Hoka batteries to output relay (R5) in run-mode (nc)
   \draw (S7-nc) to ++(0,1.75) to ++(3.5,0) to ++(0,4.5) to ++(-3.5,0) to (S9-nc);
   \draw (S6-nc) to ++(1.75,0) to ++(0,12.5) to ++(-1.75,0) to (S10-nc);
-
-
 \end{circuitikz}
 
 \end{document}
-  
