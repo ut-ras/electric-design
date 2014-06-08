@@ -30,14 +30,64 @@
   \end{scope}
 }
 
+
 \begin{document}
 
 \begin{circuitikz}
-  \dpdt(0,0){R}{S1}{S2}
-  \draw (R+) to[short] ++(-1,0) to[open, o-o, v^=$24V source$]  ++(0,2) to (R-);
-  \bat(1.5,-2.5){bat1}
-  \draw (bat1+) to (S1-in);
-  \draw (bat1-) to (S2-in);
+  % the 24V source for everything
+  \draw (-2,-0.5) coordinate (R+) to ++(-1,0) to[open, o-o, v^=$24V source$]  ++(0,2) to ++(1.25,0) coordinate (R-);
+  \draw (-2,-12.5) to (-2,15);
+  \draw (-1.75,-10.5) to (-1.75,14.75);
+
+  % five relays
+  \dpdt(0,-12){R_1}{S1}{S2}
+  \dpdt(0,-6){R_2}{S3}{S4}
+  \dpdt(0,0){R_3}{S5}{S6}
+  \dpdt(0,6){R_4}{S7}{S8}
+  \dpdt(0,12){R_5}{S9}{S10}
+  % connect them to power
+  \draw (R_1+) to[short, -o] ++(-1.5,0);
+  \draw (R_1-) to[short, -o] ++(-1.25,0);
+  \draw (R_2+) to[short, -o] ++(-1.5,0);
+  \draw (R_2-) to[short, -o] ++(-1.25,0);
+  \draw (R_3+) to[short, -o] ++(-1.5,0);
+  \draw (R_3-) to[short, -o] ++(-1.25,0);
+  \draw (R_4+) to[short, -o] ++(-1.5,0);
+  \draw (R_4-) to[short, -o] ++(-1.25,0);
+  \draw (R_5+) to[short, -o] ++(-1.5,0);
+  \draw (R_5-) to[short, -o] ++(-1.25,0);
+
+  % four batteries Hoka means everything else
+  \bat(1.5,-12.5){MotorB_1}
+  \bat(1.5,-6.5){MotorB_2}
+  \bat(1.5,-0.5){HokaiB_1}
+  \bat(1.5,5.5){HokaB_2}
+
+  % four chargers, one for each battery
+  \draw (S1-no) to ++(0,0.75) to[open, o-o, v^=$Charger_1$] ++(2,0) to (S2-no);
+  \draw (S3-no) to ++(0,0.75) to[open, o-o, v^=$Charger_2$] ++(2,0) to (S4-no);
+  \draw (S5-no) to ++(0,0.75) to[open, o-o, v^=$Charger_3$] ++(2,0) to (S6-no);
+  \draw (S7-no) to ++(0,0.75) to[open, o-o, v^=$Charger_4$] ++(2,0) to (S8-no);
+  
+  % two motor driver connections
+  \draw (S1-nc) to ++(0,1.75) to[open, o-o, v^=$Motor_1$] ++(2,0) to (S2-nc);
+  \draw (S3-nc) to ++(0,1.75) to[open, o-o, v^=$Motor_2$] ++(2,0) to (S4-nc);
+
+  % hook up Hoka 1 to Hoka 2 in series when in run-mode (nc)
+  \draw (S5-nc) to ++(0,1.75) to ++(3.5,0) to ++(0,4.25) to (S8-nc);
+
+  % name the output
+  \draw (S9-in) to[open, o-o, v=$to Regs$] (S10-in);
+
+  % connect 24V source to charge-mode (no) output relay (R5)
+  \draw (-2,15) to ++(4,0) to (S9-no);
+  \draw (-1.75,14.75) to ++(5.75,0) to (S10-no);
+
+  % connect Hoka batteries to output relay (R5) in run-mode (nc)
+  \draw (S7-nc) to ++(0,1.75) to ++(3.5,0) to ++(0,4.5) to ++(-3.5,0) to (S9-nc);
+  \draw (S6-nc) to ++(1.75,0) to ++(0,12.5) to ++(-1.75,0) to (S10-nc);
+
+
 \end{circuitikz}
 
 \end{document}
