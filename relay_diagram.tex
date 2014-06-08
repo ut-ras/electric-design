@@ -15,7 +15,7 @@
     %draw switch two; label #4
     \draw (3.5,-0.5)  coordinate (#4-in) to[short] (3.5,0) to[short, o-o] (3,1) to[short] (3,1.5) coordinate (#4-nc);
     \draw (3.5,-0.5) to[short] (3.5,0) to[open, o-o]  (4,1) to[short] (4,1.5) coordinate (#4-no);
-    \draw[dashed] (0.4,0.5) to (4,0.5);
+    \draw[dashed] (0.4,0.5) to (4.5,0.5);
   \end{scope}
 }
 
@@ -74,7 +74,7 @@
   \draw (S3-nc) to[open, o-o, v^=$Motor_2$] ++(0,2) to ++(2,0) to (S4-nc);
 
   % hook up Hoka 1 to Hoka 2 in series when in run-mode (nc)
-  \draw (S5-nc) to ++(0,1.75) to ++(3.5,0) to ++(0,4.25) to (S8-nc);
+  \draw (S5-nc) to ++(0,1.75) to ++(3.75,0) to ++(0,4.25) to (S8-nc);
 
   % name the output
   \draw (S9-in) to[open, o-o, v=$to Regs$] (S10-in);
@@ -84,8 +84,8 @@
   \draw (-1.75,14.75) to ++(5.75,0) to (S10-no);
 
   % connect Hoka batteries to output relay (R5) in run-mode (nc)
-  \draw (S7-nc) to ++(0,1.75) to ++(3.5,0) to ++(0,4.5) to ++(-3.5,0) to (S9-nc);
-  \draw (S6-nc) to ++(1.75,0) to ++(0,12.5) to ++(-1.75,0) to (S10-nc);
+  \draw (S7-nc) to ++(0,1.75) to ++(3.75,0) to ++(0,4.5) to ++(-3.75,0) to (S9-nc);
+  \draw (S6-nc) to ++(2,0) to ++(0,12.5) to ++(-2,0) to (S10-nc);
 \end{circuitikz}
 
 \end{document}
