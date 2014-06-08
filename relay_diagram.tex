@@ -4,15 +4,29 @@
 
 \def\dpdt (#1)#2#3#4{
   \begin{scope}[shift={(#1)}]
+    %draw inductor; label #2
     \draw (-0.5,-0.5) coordinate (#2+) to[short] (0,-0.5) to[short] (0,0)
     to[L] (0,1)  to[short] (0,1.5) to[short] (-0.5,1.5) coordinate (#2-) to[open] (-0.5,-0.5) ;
     \draw (0.3,-0.2) to[short] (0.3,1.2); 
     \draw (0.4,-0.2) to[short] (0.4,1.2); 
+    %draw switch one; label #3
     \draw (1.5,-0.5) coordinate (#3-in) to[short] (1.5,0) to[short, o-o] (1,1) to[short] (1,1.5) coordinate (#3-nc);
     \draw (1.5,-0.5) to[short] (1.5,0) to[open, o-o]  (2,1) to[short] (2,1.5) coordinate (#3-no);
+    %draw switch two; label #4
     \draw (3.5,-0.5)  coordinate (#4-in) to[short] (3.5,0) to[short, o-o] (3,1) to[short] (3,1.5) coordinate (#4-nc);
     \draw (3.5,-0.5) to[short] (3.5,0) to[open, o-o]  (4,1) to[short] (4,1.5) coordinate (#4-no);
     \draw[dashed] (0.4,0.5) to (4,0.5);
+  \end{scope}
+}
+
+\def\bat (#1)#2{
+  \begin{scope}[shift={(#1)}]
+    \draw (0,0) coordinate (#2+) to (0.75,0) to[open] (1.25,0) to (2,0) coordinate (#2-);
+    \draw (0.75,0.2) to (0.75,-0.2);
+    \draw (0.90,0.1) to (0.90,-0.1);
+    \draw (1.10,0.2) to (1.10,-0.2);
+    \draw (1.25,0.1) to (1.25,-0.1);
+    \draw (0,0) to[open, v=$#2$] (2,0);
   \end{scope}
 }
 
@@ -20,7 +34,10 @@
 
 \begin{circuitikz}
   \dpdt(0,0){R}{S1}{S2}
-  \draw (R+) to[short, v=$R$] (R-);
+  \draw (R+) to[short] ++(-1,0) to[open, o-o, v^=$24V source$]  ++(0,2) to (R-);
+  \bat(1.5,-2.5){bat1}
+  \draw (bat1+) to (S1-in);
+  \draw (bat1-) to (S2-in);
 \end{circuitikz}
 
 \end{document}
