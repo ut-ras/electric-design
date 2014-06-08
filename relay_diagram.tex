@@ -1,4 +1,4 @@
-\documentclass{standalone}
+\documentclass[border=10pt]{standalone}
 \usepackage{tikz}
 \usepackage[american,cuteinductors,smartlabels]{circuitikz}
 
@@ -21,8 +21,6 @@
 
 \begin{document}
 \begin{circuitikz}
-  % manually push out edges TODO: find a better way to do this
-  \draw (-5.5,-14) rectangle (8,15.5);
   % the 24V source for everything
   \draw (-2,-0.5) to ++(-1,0) to[open, o-o, v^=$24V source$]  ++(0,2) to ++(1.25,0) ;
   \draw (-2,-12.5) to (-2,15);
@@ -76,5 +74,4 @@
   \draw (S7-nc) to ++(0,1.75) to ++(3.75,0) to ++(0,4.5) to ++(-3.75,0) to (S9-nc);
   \draw (S10-nc) to ++(2,0) to[closing switch, l=$Killswitch$] ++(0,-10) to ++(-2,0) to (S6-nc);
 \end{circuitikz}
-
 \end{document}
