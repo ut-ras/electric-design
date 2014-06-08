@@ -55,7 +55,7 @@
   % four chargers, one for each battery
   \draw (S1-no) to ++(0,1.75) to ++(2,0) to[open, o-o, v^=$Charger_1$]  (S2-no);
   \draw (S3-no) to ++(0,1.75) to ++(2,0) to[open, o-o, v^=$Charger_2$]  (S4-no);
-  \draw (S5-no) to ++(0,0.75) to[open, o-o, v^=$Charger_3$] ++(2,0) to (S6-no);
+  \draw (S5-no) to ++(0,1.75) to ++(2,0) to[open, o-o, v^=$Charger_3$]  (S6-no);
   \draw (S7-no) to ++(0,0.75) to[open, o-o, v^=$Charger_4$] ++(2,0) to (S8-no);
   
   % two motor driver connections
@@ -63,7 +63,7 @@
   \draw (S3-nc) to[open, o-o, v^=$Motor_2$] ++(0,2) to ++(2,0) to (S4-nc);
 
   % hook up Hoka 1 to Hoka 2 in series when in run-mode (nc)
-  \draw (S5-nc) to ++(0,1.75) to ++(3.75,0) to ++(0,4.25) to (S8-nc);
+  \draw (S5-nc) to ++(0,2.25) to ++(3.75,0) to ++(0,3.75) to (S8-nc);
 
   % name the output
   \draw (S9-in) to[open, o-o, v=$to Regs$] (S10-in);
@@ -74,7 +74,7 @@
 
   % connect Hoka batteries to output relay (R5) in run-mode (nc)
   \draw (S7-nc) to ++(0,1.75) to ++(3.75,0) to ++(0,4.5) to ++(-3.75,0) to (S9-nc);
-  \draw (S10-nc) to ++(2,0) to[closing switch, l=$Killswitch$] ++(0,-12) to ++(-2,0) to (S6-nc);
+  \draw (S10-nc) to ++(2,0) to[closing switch, l=$Killswitch$] ++(0,-10) to ++(-2,0) to (S6-nc);
 \end{circuitikz}
 
 \end{document}
