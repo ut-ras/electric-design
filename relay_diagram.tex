@@ -19,17 +19,6 @@
   \end{scope}
 }
 
-\def\bat (#1)#2{
-  \begin{scope}[shift={(#1)}]
-    \draw (0,0) coordinate (#2+) to (0.75,0) to[open] (1.25,0) to (2,0) coordinate (#2-);
-    \draw (0.75,0.2) to (0.75,-0.2);
-    \draw (0.90,0.1) to (0.90,-0.1);
-    \draw (1.10,0.2) to (1.10,-0.2);
-    \draw (1.25,0.1) to (1.25,-0.1);
-    \draw (0,0) to[open, v=$#2$] (2,0);
-  \end{scope}
-}
-
 \begin{document}
 \begin{circuitikz}
   % manually push out edges TODO: find a better way to do this
@@ -58,10 +47,10 @@
   \draw (R_5-) to[short, -o] ++(-1.25,0);
 
   % four batteries Hoka means everything else
-  \bat(1.5,-12.5){MotorB_1}
-  \bat(1.5,-6.5){MotorB_2}
-  \bat(1.5,-0.5){HokaiB_1}
-  \bat(1.5,5.5){HokaB_2}
+  \draw (S2-in) to[battery, v=$MotorB_1$] (S1-in);
+  \draw (S4-in) to[battery, v=$MotorB_2$] (S3-in);
+  \draw (S6-in) to[battery, v=$HokaB_1$] (S5-in);
+  \draw (S8-in) to[battery, v=$HokaB_1$] (S7-in);
 
   % four chargers, one for each battery
   \draw (S1-no) to ++(0,1.75) to ++(2,0) to[open, o-o, v^=$Charger_1$]  (S2-no);
