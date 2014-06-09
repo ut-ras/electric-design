@@ -11,6 +11,10 @@ Rasputin's sensors are powered regardless of mode.
 The relays are powered by a AC to DC converter so that they will switch to charging mode when plugged in.
 A diagram of the relay system is provided as figure \ref{relay-diagram} and figure \ref{power-distrobution-diagram} is a diagram of the system as a whole.
 
-To isolate the electronics from the motors, we simply use separate lead-acid batteries for both systems and opto-isolated motor drivers.
 \subfile{relay-diagram}
+Isolation was a much larger challenge on this robot than we had initially anticipated, as the power draw of the motors would affect both the regulators and the data from sensors.
+To isolate the electronics from the motors from the regulators, we simply use separate lead-acid batteries for both systems and opto-isolated motor drivers.
+We had a very strange problem that manifested itself as a quick disconnect of every device on the USB hub immediately following a press of the motor's emergency stop button.
+Upon analysis, we found out that this was EM interference picked up by the exposed USB traces on the Launchpad.
+We solved this by placing the Launchpad in a Faraday cage.
 \end{document}
