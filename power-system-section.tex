@@ -1,14 +1,6 @@
 \documentclass[master.tex]{subfiles}
 \begin{document}
-\begin{figure}
-  \subfile{power-distribution-diagram}
-  \caption{A high level view of the power system on Rasputin.
-    The arc labelled $A$ acts as a select line for run or charge mode, selecting run mode when Rasputin is not plugged into AC power and charge mode when he is.
-    Connections in {\color{red} red} are only available when Rasputin is plugged into AC power.
-    Connections in {\color{blue} blue} are only available when Rasputin is not plugged into AC power.
-    Connections in black are always available.}
-  \label{power-distrobution-diagram}
-\end{figure}
+\subfile{power-distribution-diagram}
 \subsection{Power Distribution System}
 The power system on Rasputin was designed to make it easy to charge and to isolate the sensitive electronics, like the GPS, from the power-line noise caused by driving motors.
 
@@ -20,9 +12,5 @@ The relays are powered by a AC to DC converter so that they will switch to charg
 A diagram of the relay system is provided as figure \ref{relay-diagram} and figure \ref{power-distrobution-diagram} is a diagram of the system as a whole.
 
 To isolate the electronics from the motors, we simply use separate lead-acid batteries for both systems and opto-isolated motor drivers.
-\begin{figure}
-  \subfile{relay-diagram}
-  \caption{The connections to the relays used to switch from running to charging mode}
-  \label{relay-diagram}
-\end{figure}
+\subfile{relay-diagram}
 \end{document}
