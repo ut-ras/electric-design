@@ -18,15 +18,16 @@
     & \node[draw,shape=rectangle] (batteries) {Batteries}; 
     & \node[draw,shape=rectangle] (chargers) {Chargers}; \\
   };
-  \path[->] (19reg)     edge (GPS);
-  \path[->] (12reg)     edge (Router);
-  \path[->] (5reg)      edge (usb);
-  \path[->] (relays)    edge [bend right] (19reg);
-  \path[->] (relays)    edge (12reg);
-  \path[->] (relays)    edge [bend left] (5reg) ;
-  \path[->] (relays)    edge [bend left] (motors) ;
-  \path[->] (24Vsource) edge node[above] {A}  (relays) ;
-  \path[->] (batteries) edge (relays) ;
-  \path[->] (chargers)  edge [bend left](relays) ;
+  \draw[->] (19reg)     edge (GPS);
+  \draw[->] (12reg)     edge (Router);
+  \draw[->] (5reg)      edge (usb);
+  \draw[->] (relays)    edge [bend right] (19reg);
+  \draw[->] (relays)    edge (12reg);
+  \draw[->] (relays)    edge [bend left] (5reg) ;
+  \draw[->] (relays)    edge [bend left] (motors) ;
+  \draw[->,red] (24Vsource) edge node[above] {A}  (relays) ;
+  \draw[<-,red] (batteries) edge [bend left](relays) ;
+  \draw[->,blue] (batteries) edge [bend right] (relays) ;
+  \draw[->,red] (chargers)  edge [bend left](relays) ;
 \end{tikzpicture}
 \end{document}

@@ -2,10 +2,15 @@
 \begin{document}
 \subsection{Power Distrobution System}
 The power system on Rasputin was designed to make it easy to charge and to isolate the sensitive electonics, like the GPS, from the powerline noise caused by driving motors.
-To isolate the electronics from the motors, we simply used seperate lead-acid batteries for both systems and opto-isolated motor drivers.
-Our charging circuit uses five double pull double throw relays to switch between running mode, normally connected, and charging mode, normally open.
-The relays are all powered by a AC to DC converter so that they will switch to charging mode when pulgged in.
-A diagram of the relay system is provided as figure \ref{relay-diagram} and of the system as a wholeis provided in figure \ref{power-distrobution-diagram}.
+
+Our charging circuit uses five double pull double throw relays to switch between `run' mode as normally connected, and `charge' mode as normally open.
+In run mode, Rasputin is discharging his batteries and is capable of driving his motors.
+In charge mode, Rasputin is charging his batterise and cannot drive.
+Rasputin's sensors are powered regardless of mode.
+The relays are powered by a AC to DC converter so that they will switch to charging mode when pulgged in.
+A diagram of the relay system is provided as figure \ref{relay-diagram} and figure \ref{power-distrobution-diagram} is a diagram of the system as a whole.
+
+To isolate the electronics from the motors, we simply use seperate lead-acid batteries for both systems and opto-isolated motor drivers.
 \begin{figure}
   \subfile{relay-diagram}
   \caption{The connections to the relays used to switch from running to charging mode}
@@ -14,7 +19,10 @@ A diagram of the relay system is provided as figure \ref{relay-diagram} and of t
 \begin{figure}
   \subfile{power-distrobution-diagram}
   \caption{A high level view of the power system on Rasputin.
-    The arc labeled $A$ acts as a select line for run or charge mode. }
+    The arc labeled $A$ acts as a select line for run or charge mode, selecting run mode when Rasputin is not plugged into AC power and charge mode when he is.
+    Connections in {\color{red} red} are only available when Rasputin is plugged into AC power.
+    Connections in {\color{blue} blue} are only available when Rasputin is not plugged into AC power.
+    Connections in black are always available.}
   \label{power-distrobution-diagram}
 \end{figure}
 \end{document}
