@@ -1,7 +1,20 @@
-\documentclass[border=10pt]{standalone}
-\usepackage{standalone}
-\usepackage{tikz}
-\usepackage[american]{circuitikz}
+\documentclass[master.tex]{subfiles}
 \begin{document}
-\includestandalone[mode=buildnew]{relay-diagram}
+\subsection{Power Distrobution System}
+The power system on Rasputin was designed to make it easy to charge and to isolate the sensitive electonics, like the GPS, from the powerline noise caused by driving motors.
+To isolate the electronics from the motors, we simply used seperate lead-acid batteries for both systems and opto-isolated motor drivers.
+Our charging circuit uses five double pull double throw relays to switch between running mode, normally connected, and charging mode, normally open.
+The relays are all powered by a AC to DC converter so that they will switch to charging mode when pulgged in.
+A diagram of the relay system is provided as figure \ref{relay-diagram} and of the system as a wholeis provided in figure \ref{power-distrobution-diagram}.
+\begin{figure}
+  \subfile{relay-diagram}
+  \caption{The connections to the relays used to switch from running to charging mode}
+  \label{relay-diagram}
+\end{figure}
+\begin{figure}
+  \subfile{power-distrobution-diagram}
+  \caption{A high level view of the power system on Rasputin.
+    The arc labeled $A$ acts as a select line for run or charge mode. }
+  \label{power-distrobution-diagram}
+\end{figure}
 \end{document}
